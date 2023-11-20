@@ -15,7 +15,7 @@ print(not_empty.sum(), 'masks in', masks[not_empty].ImageId.nunique(), 'images')
 print((~not_empty).sum(), 'empty images in', masks.ImageId.nunique(), 'total images')
 masks.head()
 ```
-photo
+ ![alt text](./images/eda1.png)
 
 As mentioned above, this data has one major class - empty image. By making another column to mask Dataframe, grouping it by each image instance, and sum its masks we can see how each group (number of ships on one image) is distributed.
 After plotting the histogram of distribution we can see that this dataset is highly unbalanced. This can cause an overfitting. This is because the model's objective is often to minimize the overall error, and if one class has more instances, the model may focus more on correctly predicting the majority class while neglecting the minority class. Resampling is preferred in this situation.
@@ -30,7 +30,7 @@ print('Max of ships : ',unique_img_ids['ships'].max())
 print('Avg of ships : ',unique_img_ids['ships'].mean())
 ```
 
-photo
+ ![alt text](images/eda2.png)
 
 In the cell below, we undersample groups by 4000 instances so each group will have a maximum of 4000 examples. After resampling, the dataset will be more balanced and more resistant to overfitting. Also, volume of data is highly reduced which will speed up our training process.
 
@@ -40,7 +40,7 @@ balanced_train_df = unique_img_ids.groupby('ships').apply(lambda x: x.sample(SAM
 balanced_train_df['ships'].hist(bins=balanced_train_df['ships'].max()+1)
 print(balanced_train_df.shape[0], 'masks')
 ```
-photo
+ ![alt text](images/eda3.png)
 
 ## Architecture
 - Architecture: UNet
@@ -49,7 +49,7 @@ photo
 - learning scheduler: ReduceLROnPlateau(factor=0.5, patience=3)
 
 ## Results
-Example 1: photo
-Example 2: photo
-Example 3: photo
-Example 4: photo
+Example 1:  ![alt text](images/ex1.png)
+Example 2: ![alt text](images/ex2.png)
+Example 3: ![alt text](images/ex2.png)
+Example 4: ![alt text](images/ex4.png)
