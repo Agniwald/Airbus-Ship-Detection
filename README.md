@@ -51,5 +51,5 @@ print(balanced_train_df.shape[0], 'masks')
 ## Results
 Example 1:  ![alt text](images/ex1.png)
 Example 2: ![alt text](images/ex2.png)
-Example 3: ![alt text](images/ex2.png)
+Example 3: ![alt text](images/ex3.png)
 Example 4: ![alt text](images/ex4.png)
